@@ -10,34 +10,34 @@
     - [x]   drop              -- <set to 1>
     - [x]   about             -- <set to 1>
     - [x]   clearbodies       -- <set to 1>
-    - [ ]   viewhands
+    - [x]   viewhands         -- <model_name>
     - [x]   eb_explosive      -- <radius>
     - [x]   eb_magic          -- <degrees>
-    - [ ]   spawn_model
+    - [x]   spawn_model       -- <model_name>
     - [x]   spawn_fx          -- <fx_name>
     - [x]   vision            -- <vision>
-    - [ ]   fog
+    - [x]   fog               -- <start end red green blue intensity opacity transition>
 
 **BOT FUNCTIONS**
 
     - [x]   spawn             -- <axis/allies>
-    - [x]   weapon            -- <bot_name> <weapon_name> <camo_name>
+    - [x]   weapon            -- <bot_name> <weapon_name> <camo_name> // Please note, although every camo is included, some do not work.
     - [x]   move              -- <bot_name>
     - [x]   aim               -- <bot_name>
     - [x]   stare             -- <bot_name>
-    - [ ]   model
+    - [x]   model             -- <full_model_name> // Ex: mp_fullbody_juggernaut_heavy_black
     - [x]   kill              -- <bot_name> <body/head>
-    - [ ]   holdgun
+    - [ ]   holdgun           -- <set to 1> // Currently doesn't work.
     - [x]   freeze            -- <set to 1>
 
 **ACTOR FUNCTIONS**
 
-    - [ ]   actorback    
-    - [ ]   actor_anim    
+    - [x]   actorback         -- <set to 1>
+    - [x]   actor_anim        -- <actor_name> <anim_name>
     - [ ]   actor_copy   
     - [ ]   actor_death 
-    - [ ]   actor_spawn    
-    - [ ]   actor_move    
+    - [x]   actor_spawn       -- <body_model> <head_model> <anim_name> <death_anim>
+    - [x]   actor_move        -- <actor_name>
     - [ ]   actor_health  
     - [ ]   actor_model   
     - [ ]   actor_weapon 
@@ -47,11 +47,12 @@
 **CAMERA FUNCTIONS**
 
     - [x]   mode              -- <linear/bezier>
-    - [ ]   rot
+    - [x]   rot               -- <degrees>
     - [x]   save              -- <node # starting from 1>
     - [x]   start             -- <speed if bezier, time if linear>
     
 </br><br/>
 **PLANNED FEATURES**
     
-    - [ ]   actors
+    - [ ]   actors - full support.
+    - [ ]   bots   - better way to spawn, etc, all the normal stuff.

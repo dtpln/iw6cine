@@ -46,7 +46,7 @@ onPlayerSpawned()
 
     self scripts\player::playerRegenAmmo();
     self thread scripts\misc::class_swap();
-    self thread scripts\utils::bots_tweaks();
+    //self thread scripts\utils::bots_tweaks();
     for(;;)
     {
         self waittill("spawned_player");

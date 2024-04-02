@@ -3,7 +3,7 @@
  *      Camera functions
  */
 
-#include scripts\maths;
+//#include scripts\maths;
 #include scripts\utils;
 #include maps\mp\gametypes\_hud_util;
 #include maps\mp\_utility;
@@ -20,7 +20,7 @@ camsavenode( args )
 
     if( isDefined(level.cam["obj"][i]) ) level.cam["obj"][i] delete();
     level.cam["obj"][i] = spawn( "script_model", level.cam["orgpath"][i] );
-    level.cam["obj"][i] setmodel( "axis_guide_createfx" );
+    level.cam["obj"][i] setmodel( "tag_origin" );
     level.cam["obj"][i].angles = self getplayerangles();
     level.cam["obj"][i] hudoutlineenable( "outlinefill_nodepth_green" );
 
@@ -28,7 +28,7 @@ camsavenode( args )
         level.cam["count"] = i;
 
     createcamprev();
-    self iprintln("[camera] * ^3Position ^7" + i + " saved " + self.origin );
+    self iprintln("[^2IW6CAM^7] * ^3Position ^7" + i + " saved " + self.origin );
 }
 
 camsetmode( args )
@@ -37,15 +37,15 @@ camsetmode( args )
     deletecamprev();
 
     if( ( level.cam["type"] == "bezier" && level.cam["count"] > 13 ) )
-        self iprintln("[camera] * ^113 points max for bezier" );
+        self iprintln("[^2IW6CAM^7] * ^113 points max for bezier" );
 
     if( ( level.cam["type"] == "bezier" && level.cam["count"] <= 13 ) || level.cam["type"] == "linear" ) {
-        self iprintln("[camera] * ^3" + level.cam["type"] + " ^7mode" );
+        self iprintln("[^2IW6CAM^7] * ^3" + level.cam["type"] + " ^7mode" );
         createcamprev();
     }
 
     else {
-        self iprintln("[camera] * ^1Invalid mode - must be bezier/linear" );
+        self iprintln("[^2IW6CAM^7] * ^1Invalid mode - must be bezier/linear" );
         level.cam["type"] = "bezier";
         createcamprev();
     }
@@ -75,15 +75,15 @@ createcamprev()
             }
 
             level.cam["path"][n] = spawn( "script_model", (pos[0],pos[1],pos[2]) );
-            level.cam["path"][n] setModel( "misc_wm_flarestick" );
+            level.cam["path"][n] setModel( "tag_origin" );
             level.cam["path"][n].angles = (ang[0], ang[1], ang[2] + 90);
             level.cam["path"][n] hudoutlineenable( "outlinefill_nodepth_red" );
             n++;
         }
     }
     else if( level.cam["type"] == "linear" )
-         self iprintln("[camera] * ^1Preview for linear not implemented yet" );
-    else self iprintln("[camera] * ^1Can't create preview for '" + level.cam["type"] + "' mode" );
+         self iprintln("[^2IW6CAM^7] * ^1Preview for linear not implemented yet" );
+    else self iprintln("[^2IW6CAM^7] * ^1Can't create preview for '" + level.cam["type"] + "' mode" );
 }
 
 
@@ -102,10 +102,10 @@ camstartpath( args )
     preparenodedistances();
 
     if( level.cam["type"] != "bezier" && level.cam["type"] != "linear" ) 
-        self iprintln( "[camera] * ^1Invalid path type" );
+        self iprintln( "[^2IW6CAM^7] * ^1Invalid path type" );
     
     if( level.cam["type"] == "bezier" && level.cam["count"] < 3 ) 
-        self iprintln( "[camera] * ^1Bezier needs atleast 3 nodes" );
+        self iprintln( "[^2IW6CAM^7] * ^1Bezier needs atleast 3 nodes" );
 
     wait 2;
     hidecamprev();
@@ -180,8 +180,10 @@ preparenodedistances()
 
 camsetrot( args )
 {
-    self setplayerangles( self getplayerangles()[0], self getplayerangles()[1], int(args[0]) );
-    self iprintln("[camera] * Added ^3" + args[0] + " deg" );
+    roll = args[0];
+    angles = self.angles;
+    self setPlayerAngles( ( angles[0], angles[1], int( roll ) ) );
+    self iprintln("[^2IW6CAM^7] * Added ^3" + roll + " deg" );
 }
 
 hidecamprev()

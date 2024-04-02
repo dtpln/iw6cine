@@ -3,10 +3,11 @@
  *      Miscellaneous functions
  */
 
+#include maps\mp\_art;
 #include maps\mp\_utility;
 #include common_scripts\utility;
-#include scripts\utils;
 #include maps\mp\gametypes\_class;
+#include scripts\utils;
 
 clone()
 {
@@ -77,10 +78,9 @@ magc_bullets()
 
 viewhands( args )
 {
-    newVM = ( args[0] );
-    self iPrintLnBold( "[" + level.HIGHLIGHT_COLOR + "IW6Cine^7] Setting viewmodel to " + level.COMMAND_COLOR + newVM );
-    self setViewmodel( newVM );
-    self.pers["viewmodel"] = newVM;
+    pront( "[" + level.HIGHLIGHT_COLOR + "IW6Cine^7] Settings viewmodel to: " + level.COMMAND_COLOR + args[0] );
+    self setViewmodel( args[0] );
+    self.pers["viewmodel"] = args[0];
 }
 
 reset_models()
@@ -99,7 +99,7 @@ reset_models()
 toggle_holding()
 {
     level.BOT_WEAPHOLD ^= 1;
-    self iPrintLn( "[" + level.HIGHLIGHT_COLOR + "6Cine^7] Holding weapons on death: " + level.COMMAND_COLOR + bool(level.BOT_WEAPHOLD) );
+    pront( "[" + level.HIGHLIGHT_COLOR + "IW6Cine^7] Holding weapons on death: " + level.COMMAND_COLOR + bool(level.BOT_WEAPHOLD) );
 
     if( !level.BOT_WEAPHOLD ) {
         foreach( player in level.players )
@@ -111,7 +111,7 @@ toggle_freeze()
 {
     level.BOT_FREEZE ^= 1;
     foreach( player in level.players ) {
-        self iPrintLn( "[" + level.HIGHLIGHT_COLOR + "6Cine^7] Frozen bots: " + level.COMMAND_COLOR + bool( level.BOT_FREEZE ) );
+        self iPrintLn( "[" + level.HIGHLIGHT_COLOR + "IW6Cine^7] Frozen bots: " + level.COMMAND_COLOR + bool( level.BOT_FREEZE ) );
         if( isbot( player ) )
             player freezecontrols( level.BOT_FREEZE );
         else
@@ -147,25 +147,21 @@ change_vision( args )
 {
     vision = args[0];
     self VisionSetNakedForPlayer( vision );
-    self iPrintLn("Vision changed to : " + vision);
+    self iPrintLn( "[" + level.HIGHLIGHT_COLOR + "IW6Cine^7] Vision changed to : " + level.COMMAND_COLOR + vision);
 }
 
-change_fog()
+change_fog( args )
 {
-    /*start       = int( args[0] );
+    start       = int( args[0] );
     end         = int( args[1] );
     red         = int( args[2] );
     green       = int( args[3] );
     blue        = int( args[4] );
     intensity   = int( args[5] );
-    opacity     = int( args[5] );
-    transition  = int( args[6] );
-    scale       = int( args[7] );
-    skyFogIntensity = int( args[8] );
-    skyFogMin   = int( args[9] );
-    skyFogMax   = int( args[10] );*/
+    opacity     = int( args[6] );
+    transition  = int( args[7] );
 
-    //setExpFog( start, end, red, green, blue, opacity, transition );
+	setExpFog( start, end, red, green, blue, intensity, opacity, transition, 0, 0, 0 );
 }
 
 

@@ -37,7 +37,7 @@ add( args )
     newactor["head"] scriptModelPlayAnim( base_anim );
 
     newactor["hitbox"] = spawn( "script_model", newactor["body"].origin + ( 0, 0, 40 ) );
-    newactor["hitbox"] setModel( "com_plasticcase_enemy" );
+    newactor["hitbox"] setModel( "com_plasticcase_beige_big" );
     newactor["hitbox"] Solid();
     newactor["hitbox"].angles = (90, 0, 0);
     newactor["hitbox"] hide();
@@ -137,16 +137,16 @@ gopro( args )
     {
         foreach( actor in level.actors )
         {
-            if ( select_ents( actor, action, self ) ) 
+            if (action == actor.name)
             {
                 if ( level.gopro.linked ) {
                     level.gopro unlink();
                     level.gopro.linked ^= 1;
                 }
-                level.gopro.origin = actor GetTagOrigin( tag );
-                level.gopro.angles = actor GetTagAngles( tag );
+                level.gopro.origin = actor.name GetTagOrigin( tag );
+                level.gopro.angles = actor.name GetTagAngles( tag );
                 skipframe();
-                level.gopro linkTo( actor, tag, ( int(x), int(y), int(z) ), ( int(roll), int(pitch), int(yaw) ) );
+                level.gopro linkTo( actor.name, tag, ( int(x), int(y), int(z) ), ( int(roll), int(pitch), int(yaw) ) );
                 level.gopro.linked = 1;
             }
         }
@@ -178,7 +178,7 @@ track_damage()
     if( level.ACTOR_SHOW_KILLFEED )
         pront( "^8" + killer.name + " :" + fake_killfeed_icon( getBaseWeaponName( killer getCurrentWeapon() ) ) + "+hb: ^9" + self["name"] );
 
-    killer maps\mp\gametypes\_rank::xpEventPopup( ( level.scoreInfo["kill"]["value"] ) , 0 );
+    killer maps\mp\gametypes\_rank::xpPointsPopup( ( level.scoreInfo["kill"]["value"] ) , 0 );
 }
 
 back()

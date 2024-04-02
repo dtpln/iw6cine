@@ -4,12 +4,12 @@
 
 ### 🎥 A features-rich cinematic mod for Call of Duty: Ghosts
 
-<img src="https://img.shields.io/badge/REWRITE%20IN%20PROGRESS-f68d3d?style=flat-square">　<a href="https://github.com/dtpln/iw6cine/releases"><img src="https://img.shields.io/github/v/release/dtpln/iw6cine?label=Latest%20release&style=flat-square&color=f68d3d"></a>　<a href="https://discord.gg/wgRJDJJ"><img src="https://img.shields.io/discord/617736623412740146?label=Join%20the%20IW4Cine%20Discord!&style=flat-square&color=f68d3d"></a>  
+<img src="https://img.shields.io/badge/WORK%20IN%20PROGRESS-f68d3d?style=flat-square"><a href="https://github.com/dtpln/iw6cine/releases/latest">　<img src="https://img.shields.io/github/v/release/dtpln/iw6cine?label=Latest%20release&style=flat-square&color=f68d3d"></a><a href="https://discord.gg/wgRJDJJ"><img src="https://img.shields.io/discord/617736623412740146?label=Join%20the%20IW4Cine%20Discord!&style=flat-square&color=f68d3d"></a>
 <br/><br/>
 
 **PLEASE NOTE**: As the original mod is in a WIP phase, so will this port be..
 
-This is a port of [Sass' Cinematic Mod](https://github.com/sortileges/iw4cine) for Call of Duty: Ghosts, designed for video editors to create cinematics shots in-game.
+This is a port of [Sass' Cinematic Mod](https://github.com/sortileges/iw4cine) for Call of Duty®: Ghosts, designed for video editors to create cinematics shots in-game.
 
 This mod creates new dvars combined as player commands. They are all associated to script functions that are triggered when the dvar doesn't equal it's default value, meaning these functions will all independently stay idle until they get notified to go ahead.
 
@@ -26,7 +26,7 @@ In order to use the latest version of this mod directly from the repo, you'll ne
 
 Simply download the mod through [this link](https://github.com/dtpln/iw6cine/releases/latest). Scroll down and click on "Source code (zip)" to download the archive.
 
-Once the mod is downloaded, open the ZIP file and drag the contents of the "IW6Cine" folder into your `Call of Duty Ghosts/data/scripts` folder.
+Once the mod is downloaded, open the ZIP file and drag the contents of the "IW6Cine" folder into your `data/scripts` folder.
 
 <br/>
 
@@ -61,24 +61,24 @@ Once [Sass](https://github.com/sortileges) finishes the mod's rewrite, the HTML 
     - [x]   drop              -- <set to 1>
     - [x]   about             -- <set to 1>
     - [x]   clearbodies       -- <set to 1>
-    - [ ]   viewhands         -- <model_name>
+    - [x]   viewhands         -- <model_name>
     - [x]   eb_explosive      -- <radius>
     - [x]   eb_magic          -- <degrees>
-    - [ ]   spawn_model       -- <model_name>
+    - [x]   spawn_model       -- <model_name>
     - [x]   spawn_fx          -- <fx_name>
     - [x]   vision            -- <vision>
-    - [ ]   fog
+    - [ ]   fog               -- <start end red green blue transition>
 
 **BOT FUNCTIONS**
 
-    - [x]   spawn             -- <allies/axis>
-    - [x]   weapon            -- <bot_name> <weapon_name> <camo_name>
+    - [x]   spawn             -- <axis/allies>
+    - [x]   weapon            -- <bot_name> <weapon_name> <camo_name> // Please note, although every camo is included, some do not work.
     - [x]   move              -- <bot_name>
     - [x]   aim               -- <bot_name>
     - [x]   stare             -- <bot_name>
-    - [ ]   model             -- <bot_name> <MODEL> <allies/axis>
+    - [x]   model             -- <full_model_name> // Ex: mp_fullbody_juggernaut_heavy_black
     - [x]   kill              -- <bot_name> <body/head>
-    - [ ]   holdgun           -- <set to 1>
+    - [ ]   holdgun           -- <set to 1> // Currently doesn't work.
     - [x]   freeze            -- <set to 1>
 
 **ACTOR FUNCTIONS**
@@ -101,8 +101,7 @@ Once [Sass](https://github.com/sortileges) finishes the mod's rewrite, the HTML 
     - [ ]   rot               -- <degrees>
     - [x]   save              -- <node # starting from 1>
     - [x]   start             -- <speed if bezier, time if linear>
-    
-</br><br/>
+
 **PLANNED FEATURES**
     
     - [ ]   actors

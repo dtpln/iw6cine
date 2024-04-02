@@ -18,7 +18,7 @@
 
 custom_precache()
 {
-
+    
 }
 
 
@@ -32,11 +32,13 @@ custom_precache()
 // Anything below this point is a no-touch zone, unless you know what you're removing
 common_precache()
 {
-    precacheModel( "defaultactor" );
-    precacheModel( "projectile_rpg7" );
+    precacheModel( "head_mp_merrick_a" );
+    precacheModel( "mp_body_mp_merrick_a_elite" );
+    precacheShader( "ui_reticle_dlc_10" );
+    precacheShader( "white" );
     precacheModel( "projectile_semtex_grenade_bombsquad" );
     precacheModel( "tag_origin" );
-    precacheModel( "com_plasticcase_enemy" );
+    precacheModel( "com_plasticcase_beige_big" );
     precacheMPAnim( "pb_stand_remotecontroller" );
     precacheMPAnim( "pb_stand_death_chest_blowback" );
 }

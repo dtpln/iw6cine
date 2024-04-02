@@ -117,6 +117,7 @@ hud_tweaks()
 
 match_tweaks()
 {
+    setDvar( "sv_cheats", 1 );
     if( level.MATCH_UNLIMITED_TIME )
         setDvar( "scr_" + level.gameType + "_timelimit", 0 );
 

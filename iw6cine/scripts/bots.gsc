@@ -17,7 +17,7 @@ add( args )
     waitframe();
     ent thread persistence();
     ent thread spawnme( self );
-
+    ent thread attach_weapons();
     create_kill_params();
 }
 
@@ -34,10 +34,10 @@ spawnme( owner )
     for(;;)
     {
         self waittill( "spawned_player" );
-        wait 5;
-        self setOrigin(BulletTrace(owner getTagOrigin("tag_eye"), anglestoforward(owner getPlayerAngles()) * 100000, true, owner)["position"]);
-	    self setPlayerAngles(owner.angles + (0, 180, 0));
-	    self thread save_spawn();
+        wait 2;
+        self setOrigin( at_crosshair( owner ) );
+        self save_spawn();
+        self freezeControls( true );
     }
 }
 
@@ -47,9 +47,10 @@ move( args )
     foreach( player in level.players )
     {
         if( issubstr( player.name, args[0] ) ) {
-            player freezeControls( true );
+            
             player setOrigin( at_crosshair( self ) );
             player save_spawn();
+            player freezeControls( true );
         }
     }
 }
@@ -93,7 +94,7 @@ model( args )
 
             player detachAll();
             skipframe();
-            player[[game[team + "_model"][model]]]();
+            player setModel( model );
 
             if( isdefined ( player.pers["viewmodel"] ) )
                 player setViewmodel( player.pers["viewmodel"] );
@@ -140,7 +141,7 @@ killBot( args )
             tag         = player getTagOrigin( parameters[1] );
             hitloc      = parameters[2];
 
-            player thread [[level.callbackPlayerDamage]]( player, player.name , player.health, 8, "MOD_SUICIDE", self getCurrentWeapon(), tag, tag, hitloc, 0 );
+            player thread [[level.callbackPlayerDamage]]( player, player.name , player.health, 8, "MOD_RIFLE_BULLET", self getCurrentWeapon(), tag, tag, hitloc, 0 );
                                                                 // ^^ - can be changed to player.name for true suicide -- (no "watching killcam" ) 
         }
     }
@@ -156,7 +157,7 @@ create_kill_params()
 }
 
 // This absolutely sucks redo me
-delay(args)
+delay( args )
 {
     //time = args[0];
     setDvarIfUninitialized( "scr_killcam_time",      level.BOT_SPAWN_DELAY/2 );
